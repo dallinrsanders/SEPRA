@@ -86,7 +86,7 @@ class Controller extends BaseController
 		$Host->description = $_POST["description"];
 		$Host->workspace_id = $Workspace->id;
 		$Host->save();
-        return view('hosttable',["Workspace"=>$Workspace,"Hosts"=>$Workspace->host->sortBy("ip")]);
+        return view('hosttable',["Workspace"=>$Workspace,"Hosts"=>$Workspace->host->sortBy("ip"),"NoVulns"=>$_POST["NoVulns"],"Information"=>$_POST["Information"],"Low"=>$_POST["Low"],"Medium"=>$_POST["Medium"],"High"=>$_POST["High"],"Critical"=>$_POST["Critical"]]);
 		}
 		else{
 			return "Error";

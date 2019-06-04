@@ -18,6 +18,12 @@ function SaveNewHost(){
 	"os": document.getElementById("NewOS").value,
 	"mac": document.getElementById("NewMac").value,
 	"description": document.getElementById("NewDescription").value,
+	"NoVulns":"{{$NoVulns}}",
+	"Information":"{{$Information}}",
+	"Low":"{{$Low}}",
+	"Medium":"{{$Medium}}",
+	"High":"{{$High}}",
+	"Critical":"{{$Critical}}",
 	"_token": "{{ csrf_token() }}"
   },
   function(data, status){
