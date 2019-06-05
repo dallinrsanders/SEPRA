@@ -13,7 +13,7 @@ class Manswer extends Model
 		return $this->belongsTo(Workspacemethodology::class);
 	}
 	public function mfile(){
-		return $this->hasMany(mfile::class);
+		return $this->hasMany(Mfile::class);
 	}
     //
 }
