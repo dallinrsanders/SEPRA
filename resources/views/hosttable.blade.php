@@ -1,6 +1,7 @@
-
+<form action="/MultiDeleteHost" method=post id=hostform>
+{{csrf_field()}}
 				<table class="table table-striped">
-				<tr><th>Name</th><th>IP</th><th>OS</th><th>Services</th><th>Vulns</th><th>Credentials</th><th>Creation Time</th></tr>
+				<tr><th></th><th>Name</th><th>IP</th><th>OS</th><th>Services</th><th>Vulns</th><th>Credentials</th><th>Creation Time</th></tr>
 				
 				<?php 
 				foreach($Hosts as $ThisHost){
@@ -39,13 +40,15 @@
 				if(($ThisVulns==0&&$NoVulns=="checked")||($Information2>0&&$Information=="checked")||($Low2>0&&$Low=="checked")||($Medium2>0&&$Medium=="checked")||($High2>0&&$High=="checked")||($Critical2>0&&$Critical=="checked")){
 				?>
 				
-				<tr onclick="javascript:window.location='ViewHost/{{$ThisHost->id}}'"><td>{{$ThisHost->name}}</td>
-				<td>{{$ThisHost->ip}}</td>
-				<td>{{$ThisHost->OS}}</td>
-				<td>{{$ThisServices}}</td>
-				<td>{{$ThisVulns}}</td>
-				<td>{{$ThisCredentials}}</td>
-				<td>{{$ThisHost->created_at}}</td>
+				<tr><td><input type=checkbox name="{{$ThisHost->id}}"><td onclick="javascript:window.location='ViewHost/{{$ThisHost->id}}'">{{$ThisHost->name}}</td>
+				<td onclick="javascript:window.location='ViewHost/{{$ThisHost->id}}'">{{$ThisHost->ip}}</td>
+				<td onclick="javascript:window.location='ViewHost/{{$ThisHost->id}}'">{{$ThisHost->OS}}</td>
+				<td onclick="javascript:window.location='ViewHost/{{$ThisHost->id}}'">{{$ThisServices}}</td>
+				<td onclick="javascript:window.location='ViewHost/{{$ThisHost->id}}'">{{$ThisVulns}}</td>
+				<td onclick="javascript:window.location='ViewHost/{{$ThisHost->id}}'">{{$ThisCredentials}}</td>
+				<td onclick="javascript:window.location='ViewHost/{{$ThisHost->id}}'">{{$ThisHost->created_at}}</td>
 				</tr>
 				<?php }} ?>
 				</table>
+				<input type=button onclick="javascript:DeleteSelected()" class="btn btn-danger" value="Delete Selected"/>
+</form>

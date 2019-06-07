@@ -31,6 +31,12 @@ function SaveNewHost(){
   });
 	$('#NewHostModal').modal('hide')
 }
+function DeleteSelected(){
+	r=confirm("Are you sure you would like to delete the hosts?");
+	if(r){
+		document.getElementById("hostform").submit();
+	}
+}
 </script>
 <div class="container">
     <div class="row justify-content-center">

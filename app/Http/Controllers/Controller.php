@@ -1227,5 +1227,29 @@ class Controller extends BaseController
 		$Workspace=Workspace::where("Active",1)->first();
 		return view('defaultreport',["Workspace"=>$Workspace]);
 	}
+	public function MultiDeleteHost(){
+		foreach($_POST as $Key=>$Value){
+			if($Key!="_token"){
+		$Host = Host::where("id",$Key)->first();
+		foreach($Host->service as $Service){
+		foreach($Service->vulnerability as $ThisVulnerability){
+			foreach($ThisVulnerability->vulnfile as $ThisFile){
+			unlink($ThisFile->upload->filepath);
+			$ThisFile->upload->delete();
+			}
+			$ThisVulnerability->delete();
+		}
+		$Service->delete();
+		}
+		
+			foreach($Host->hostfile as $ThisFile){
+			unlink($ThisFile->upload->filepath);
+			$ThisFile->upload->delete();
+			}
+		$Host->delete();
+			}
+		}
+		return redirect()->route('Hosts');
+	}
 	
 }

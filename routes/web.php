@@ -70,3 +70,4 @@ Route::get('/loader.js', 'Controller@Charts')->middleware('auth');
 Route::get('/wordcloud.js', 'Controller@WordCloud')->middleware('auth');
 Route::get('/d3.js', 'Controller@D3')->middleware('auth');
 Route::get('/DefaultReport', 'Controller@DefaultReport')->name('DefaultReport')->middleware('auth');
+Route::post('/MultiDeleteHost', 'Controller@MultiDeleteHost')->name('MultiDeleteHost')->middleware('auth');
